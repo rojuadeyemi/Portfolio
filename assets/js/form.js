@@ -1,39 +1,53 @@
 const form = document.getElementById('contact-form');
 const loadingDiv = document.querySelector('.loading');
-const successDiv = document.querySelector('.success-message');
 const errorDiv = document.querySelector('.error-message');
+const sentDiv = document.querySelector('.sent-message');
 
-form.addEventListener('submit', function(event) {
+form.addEventListener('submit', async function(event) {
     event.preventDefault(); // Prevent default form submission
-    
-    loadingDiv.style.display = 'block';  // Show loading message
-    successDiv.style.display = 'none';   // Hide success message
-    errorDiv.style.display = 'none';     // Hide error message
 
-    const formData = new FormData(form);
+    // Show loading indicator
+    loadingDiv.style.display = 'block';
+    errorDiv.style.display = 'none';
+    sentDiv.style.display = 'none';
 
-    fetch('/', {
-        method: 'POST',
-        body: formData
-    }).then(response => {
+    try {
+        const formData = new FormData(form); // Get form data
+
+        const response = await fetch(form.action, {
+            method: form.method,
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+        });
+
+        // Check if the response is okay
         if (response.ok) {
-            loadingDiv.style.display = 'none'; // Hide loading
-            successDiv.style.display = 'block'; // Show success message
+            // Hide loading indicator
+            loadingDiv.style.display = 'none';
 
-            form.reset(); // Optionally reset the form after successful submission
-            
+            // Show success message
+            sentDiv.style.display = 'block';
+
+            form.reset(); // Optionally, clear the form
+
+            // Hide the success message after 3 seconds
             setTimeout(() => {
-                successDiv.style.display = 'none'; // Hide success message after 3 seconds
-            }, 3000);
+                sentDiv.style.display = 'none'; // Clear the message
+            }, 3000); // 3000 milliseconds = 3 seconds
         } else {
-            throw new Error('Form submission failed');
+            throw new Error('Form submission failed.');
         }
-    }).catch(error => {
-        loadingDiv.style.display = 'none'; // Hide loading
-        errorDiv.style.display = 'block';  // Show error message
+    } catch (error) {
+        // Hide loading indicator
+        loadingDiv.style.display = 'none';
 
+        // Show error message
+        errorDiv.textContent = 'There was an issue submitting your form. Please try again.';
+        errorDiv.style.display = 'block';
+
+        // Optionally hide error message after some time
         setTimeout(() => {
-            errorDiv.style.display = 'none'; // Hide error message after 5 seconds
-        }, 5000);
-    });
+            errorDiv.style.display = 'none';
+        }, 5000); // Hide error message after 5 seconds
+    }
 });

@@ -629,8 +629,7 @@
                       </h5>
                     </div>
                     <div>
-                      <form id="contact-form" action="/" data-netlify="true" netlify-honeypot="bot-field"method="POST" role="form" name="contact" class="php-email-form">
-                        <input type="hidden" name="form-name" value="contact">
+                      <form id="contact-form" action="https://formspree.io/f/xqakkvwb" method="post" role="form" class="php-email-form">
 
                         <div class="row">
                           <div class="col-md-12 mb-3">
@@ -656,15 +655,10 @@
                           
 
                           <div class="col-md-12 text-center my-3">
-                            <div class="loading">Loading...</div>
-                            <div class="success-message" style="display: none;">Your message has been sent. Thank you!</div>
-                            <div class="error-message" style="display: none;">There was an error sending your message. Please try again.</div>
-                        </div>
-
-                            <!-- Honeypot field for spam prevention -->
-                            <div style="display:none">
-                                <label>Don’t fill this out if you’re human: <input name="bot-field"></label>
-                            </div>
+                            <div class="loading">Loading</div>
+                            <div class="error-message"></div>
+                            <div class="sent-message">Your message has been sent. Thank you!</div>
+                          </div>
                           
                           <div class="col-md-12 text-center">
                             <button type="submit" class="button button-a button-big button-rouded">Send</button>
