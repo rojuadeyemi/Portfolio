@@ -1,4 +1,4 @@
-const form = document.getElementById('contact-form');
+const form = document.querySelector('form');
 const loadingDiv = document.querySelector('.loading');
 const errorDiv = document.querySelector('.error-message');
 const sentDiv = document.querySelector('.sent-message');
