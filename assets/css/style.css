@@ -745,6 +745,7 @@ img:hover {
   font-size: 28px;
   max-width: 450px;
   color: #333;
+  
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent background */
   border-radius: 15px;
