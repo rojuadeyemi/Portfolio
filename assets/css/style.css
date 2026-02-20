@@ -99,9 +99,9 @@ a:visited {
 
 .bg-image {
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  
   background-size: cover;
-  background-position: center center;
+  background-position: top bottom;
 }
 
 @media (max-width: 1024px) {
@@ -738,28 +738,16 @@ img:hover {
   font-size: 12px;
 }
 
-.welcome-message {
-  position: absolute;
-  bottom: 0;
-  left: 1%;
-  font-size: 28px;
-  max-width: 450px;
-  color: #f4eaea;
-  
-  padding: 20px;
-  background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent background */
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 1, 0.2);
-}
-
 .navbar-mobile .dropdown>.dropdown-active {
   display: block;
 }
 
 .hero {
-  height: 100vh;
+  height: 150vh;
   position: relative;
   color: #fff;
+  object-fit: cover;
+  object-position: top;
 }
 
 .hero .hero-content {
